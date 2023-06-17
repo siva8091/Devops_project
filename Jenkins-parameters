@@ -1,25 +1,26 @@
 pipeline {
     agent any
 
-    parameters {
-        // Define the Extended Choice Parameter
-        extendedChoice(
-            name: 'ENVIRONMENT',
-            description: 'Select your Environment',
-            type: 'PT_SINGLE_SELECT',
-            groovyScript: [
-                script: '''
-                    return ["Prod", "Dev", "Pre-prod"]
-                '''
-            ],
-            defaultValue: 'Prod'
-        )
+    options {
+        // Set the properties for the job
+        properties([
+            parameters([
+                // Define the Extended Choice Parameter
+                [
+                    $class: 'ChoiceParameterDefinition',
+                    name: 'FRUIT',
+                    description: 'Select your favorite fruit',
+                    choices: 'Apple\nBanana\nOrange',
+                    defaultValue: 'Apple'
+                ]
+            ])
+        ])
     }
 
     stages {
-        stage('Build ') {
+        stage('Example Stage') {
             steps {
-                echo "Selected Environment: ${params.ENVIRONMENT}"
+                echo "Selected fruit: ${params.FRUIT}"
             }
         }
     }
