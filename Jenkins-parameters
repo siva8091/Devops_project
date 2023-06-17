@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    parameters {
+        // Define the Extended Choice Parameter
+        extendedChoice(
+            name: 'ENVIRONMENT',
+            description: 'Select your Environment',
+            type: 'PT_SINGLE_SELECT',
+            groovyScript: [
+                script: '''
+                    return ["Prod", "Dev", "Pre-prod"]
+                '''
+            ],
+            defaultValue: 'Prod'
+        )
+    }
+
+    stages {
+        stage('Build ') {
+            steps {
+                echo "Selected Environment: ${params.ENVIRONMENT}"
+            }
+        }
+    }
+}
