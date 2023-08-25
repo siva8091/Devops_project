@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Search for the pattern
+if grep -q "your_pattern" your_file.txt; then
+    echo "Pattern 'your_pattern' found. Build failed."
+    exit 1  # Exit with a non-zero status to indicate failure
+fi
