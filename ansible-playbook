@@ -23,3 +23,32 @@
       fail:
         msg: "Pattern 'pattern2' found in the file!"
       when: pattern2_check.rc == 0  # Execute only if the return code is 0 (pattern found)
+
+###############################################################################################################################
+---
+- name: Fail Playbook on Sonar Log Patterns
+  hosts: your_target_hosts
+  gather_facts: false
+
+  tasks:
+    - name: Check for Patterns in sonar.log
+      shell: "grep -q 'pattern1\|pattern2\|pattern3' /path/to/sonar.log"
+      register: grep_result
+      changed_when: false  # Treat it as a non-changing task
+      failed_when: grep_result.rc == 0  # Fail the task if the patterns are found
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+---
+- name: Fail Playbook on LDAP Connection Patterns
+  hosts: your_target_hosts
+  gather_facts: false
+
+  tasks:
+    - name: Check for LDAP Connection Patterns in sonar.log
+      shell: "grep -q 'LDAP-connection' /path/to/sonar.log"
+      register: ldap_pattern_found
+      changed_when: false
+      failed_when: ldap_pattern_found.rc == 0
+
