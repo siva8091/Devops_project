@@ -1,0 +1,25 @@
+---
+- name: Check for Selected Patterns and Fail Playbook
+  hosts: your_target_hosts
+  gather_facts: false
+
+  tasks:
+    - name: Check for Pattern 1
+      shell: "grep -q 'pattern1' /path/to/your/file.txt"
+      register: pattern1_check
+      ignore_errors: yes
+
+    - name: Check for Pattern 2
+      shell: "grep -q 'pattern2' /path/to/your/file.txt"
+      register: pattern2_check
+      ignore_errors: yes
+
+    - name: Fail Playbook if Pattern 1 Found
+      fail:
+        msg: "Pattern 'pattern1' found in the file!"
+      when: pattern1_check.rc == 0  # Execute only if the return code is 0 (pattern found)
+
+    - name: Fail Playbook if Pattern 2 Found
+      fail:
+        msg: "Pattern 'pattern2' found in the file!"
+      when: pattern2_check.rc == 0  # Execute only if the return code is 0 (pattern found)
