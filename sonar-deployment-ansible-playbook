@@ -1,0 +1,33 @@
+---
+- name: Manage SonarQube Plugin
+  hosts: your_sonarqube_server
+  gather_facts: false
+
+  tasks:
+    - name: Remove Existing Plugin JAR
+      file:
+        path: /path/on/sonarqube/server/extensions/plugins/pluginKey.jar
+        state: absent
+      register: remove_result
+      ignore_errors: yes
+
+    - name: Fail Playbook if Removal Fails
+      fail:
+        msg: "Failed to remove existing SonarQube plugin JAR"
+      when: remove_result.failed and remove_result.rc != 1
+
+    - name: Upload Plugin JAR
+      copy:
+        src: /path/to/local/pluginKey.jar
+        dest: /path/on/sonarqube/server/extensions/plugins/pluginKey.jar
+      register: copy_result
+
+    - name: Fail Playbook if Upload Fails
+      fail:
+        msg: "Failed to upload SonarQube plugin JAR"
+      when: not copy_result.changed
+
+    - name: Restart SonarQube Service
+      service:
+        name: sonarqube
+        state: restarted
