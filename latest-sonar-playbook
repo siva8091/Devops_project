@@ -36,3 +36,13 @@
         state: absent
       become: yes
       become_user: root
+##############################with artifactory auth #####################################
+- name: Download artifact from Artifactory
+  hosts: localhost
+  tasks:
+    - name: Download artifact
+      ansible.builtin.get_url:
+        url: "https://artifactory.example.com/path/to/your/artifact"
+        dest: "/path/to/local/destination"
+        headers:
+          "X-JFrog-Art-Api": "YOUR_API_KEY"
