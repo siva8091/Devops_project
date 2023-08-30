@@ -1,0 +1,38 @@
+---
+- name: Install Sonar Plugin from Artifactory to SonarQube Server
+  hosts: sonarqube_server
+  gather_facts: false
+  tasks:
+    - name: Create a temporary directory
+      tempfile:
+        state: directory
+      register: temp_dir
+
+    - name: Download the plugin artifact from Artifactory
+      ansible.builtin.get_url:
+        url: "https://artifactory.example.com/path/to/your/plugin/artifact.zip"
+        dest: "{{ temp_dir.path }}/plugin.zip"
+      become: yes
+      become_user: sonarqube_user
+
+    - name: Unzip the plugin artifact
+      ansible.builtin.unarchive:
+        src: "{{ temp_dir.path }}/plugin.zip"
+        dest: "/opt/sonarqube/extensions/plugins"
+        remote_src: yes
+      become: yes
+      become_user: sonarqube_user
+
+    - name: Restart SonarQube service
+      ansible.builtin.systemd:
+        name: sonarqube
+        state: restarted
+      become: yes
+      become_user: root
+
+    - name: Clean up temporary directory
+      file:
+        path: "{{ temp_dir.path }}"
+        state: absent
+      become: yes
+      become_user: root
