@@ -1,0 +1,91 @@
+#####################Install Sonar Plugin Playbook:=###############################
+---
+- name: Install Sonar Plugin
+  hosts: sonarqube_server
+  tasks:
+    - name: Download the plugin artifact from Artifactory
+      ansible.builtin.get_url:
+        url: "https://artifactory.example.com/path/to/plugin/artifact.zip"
+        dest: "/tmp/plugin.zip"
+      become: yes
+      become_user: sonarqube_user
+
+    - name: Unzip the plugin artifact
+      ansible.builtin.unarchive:
+        src: "/tmp/plugin.zip"
+        dest: "/opt/sonarqube/extensions/plugins"
+        remote_src: yes
+      become: yes
+      become_user: sonarqube_user
+
+    - name: Restart SonarQube service
+      ansible.builtin.systemd:
+        name: sonarqube
+        state: restarted
+      become: yes
+      become_user: root
+#######################Upgrade Sonar Plugin Playbook####################################
+---
+- name: Upgrade Sonar Plugin
+  hosts: sonarqube_server
+  tasks:
+    - name: Stop SonarQube service
+      ansible.builtin.systemd:
+        name: sonarqube
+        state: stopped
+      become: yes
+      become_user: root
+
+    - name: Remove old plugin version
+      ansible.builtin.file:
+        path: "/opt/sonarqube/extensions/plugins/old_plugin"
+        state: absent
+      become: yes
+      become_user: sonarqube_user
+
+    - name: Download the new plugin artifact from Artifactory
+      ansible.builtin.get_url:
+        url: "https://artifactory.example.com/path/to/new_plugin/artifact.zip"
+        dest: "/tmp/new_plugin.zip"
+      become: yes
+      become_user: sonarqube_user
+
+    - name: Unzip the new plugin artifact
+      ansible.builtin.unarchive:
+        src: "/tmp/new_plugin.zip"
+        dest: "/opt/sonarqube/extensions/plugins"
+        remote_src: yes
+      become: yes
+      become_user: sonarqube_user
+
+    - name: Restart SonarQube service
+      ansible.builtin.systemd:
+        name: sonarqube
+        state: started
+      become: yes
+      become_user: root
+######################################################Uninstall Sonar Plugin Playbook############################################
+---
+- name: Uninstall Sonar Plugin
+  hosts: sonarqube_server
+  tasks:
+    - name: Stop SonarQube service
+      ansible.builtin.systemd:
+        name: sonarqube
+        state: stopped
+      become: yes
+      become_user: root
+
+    - name: Remove the plugin
+      ansible.builtin.file:
+        path: "/opt/sonarqube/extensions/plugins/plugin_to_remove"
+        state: absent
+      become: yes
+      become_user: sonarqube_user
+
+    - name: Start SonarQube service
+      ansible.builtin.systemd:
+        name: sonarqube
+        state: started
+      become: yes
+      become_user: root
