@@ -1,0 +1,26 @@
+import requests
+
+def set_default_quality_gate(api_url, quality_gate_name):
+    # SonarQube API endpoint for setting quality gate as default
+    endpoint = f"{api_url}/api/qualitygates/set_as_default"
+
+    # Payload data
+    data = {
+        "name": quality_gate_name
+    }
+
+    # Sending POST request to set quality gate as default
+    response = requests.post(endpoint, data=data)
+
+    if response.status_code == 200:
+        print(f"Quality gate '{quality_gate_name}' set as default successfully.")
+    else:
+        print(f"Failed to set quality gate '{quality_gate_name}' as default. Error: {response.text}")
+
+if __name__ == "__main__":
+    # SonarQube API URL and quality gate name
+    sonar_api_url = "https://sonar.com"
+    quality_gate_name = "sonar"  # Replace with your quality gate name
+
+    # Call the function to set the quality gate as default
+    set_default_quality_gate(sonar_api_url, quality_gate_name)
