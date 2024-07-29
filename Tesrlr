@@ -1,0 +1,9 @@
+Subject: High qTest Web Response Due to API Traffic
+
+Hi Support Team,
+
+We are encountering high web response times for qTest due to excessive API traffic. According to APM data, some requests are taking more than 45 minutes to 1 hour on the DB side, causing significant delays.
+
+Actions Taken:
+
+Upsized the RDS from 8x la
