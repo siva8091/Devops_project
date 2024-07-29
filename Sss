@@ -1,0 +1,26 @@
+Hi Support Team,
+
+We are encountering high web response times for qTest due to qTest API traffic. According to APM data, some requests are taking more than 45 minutes to 1 hour on the DB side, causing high web response times.
+
+Actions we have taken:
+
+Upsized the RDS from 8x large to 14x large, but this did not help.
+Redirected all API traffic to a dedicated manager node.
+As per the Tricentis Team, we can implement a separate API server like a manager to handle all API traffic. If so, will it support a DB cluster mechanism, where we have multiple nodes under a DB cluster to handle all requests based on a round-robin algorithm? Also, the read replica needs to be part of the DB cluster.
+
+Is there any way to limit or block API requests from the application side?
+
+Please advise.
+
+Thank you,
+[Your Name]
+
+
+
+
+
+
+
+
+
+ChatGPT can make mistakes. Check im
