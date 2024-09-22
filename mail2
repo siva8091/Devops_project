@@ -1,0 +1,91 @@
+import requests
+import re
+import os
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+def extract_info(data):
+    """Extract project ID and email from the ELK data."""
+    project_id = re.search(r'projectid/(\d+)', data)
+    email = re.search(r'user/mail/(.+)', data)
+
+    if project_id and email:
+        return project_id.group(1), email.group(1).strip()
+    else:
+        raise ValueError("Required information not found in raw data.")
+
+def modify_email(email):
+    """Remove 'one.' from the email address."""
+    return email.replace("one.", "")
+
+def fetch_project_name(project_id):
+    """Fetch project name from qTest API."""
+    url = f"https://qtest.com:8443/api/v3/projects/{project_id}"
+    headers = {
+        'Authorization': 'Bearer YOUR_API_TOKEN'  # Replace with your actual API token
+    }
+    
+    response = requests.get(url, headers=headers)
+    
+    if response.status_code == 200:
+        project_data = response.json()
+        return project_data.get('name', 'Project name not found')
+    else:
+        raise Exception(f"Failed to fetch project name: {response.status_code} - {response.text}")
+
+def write_to_file(project_id, email, project_name):
+    """Write extracted information to an output file."""
+    with open('output.txt', 'w') as f:
+        f.write(f"PROJECT_ID={project_id}\n")
+        f.write(f"EMAIL={email}\n")
+        f.write(f"PROJECT_NAME={project_name}\n")
+
+def send_email(recipient_email, project_name, project_id):
+    """Send email notification."""
+    sender_email = "your_email@example.com"  # Replace with your sender email
+    sender_password = "your_email_password"   # Replace with your email password
+    cc_email = "admin@test.com"
+    subject = f"Manual sync for qTest {project_name} - {project_id}"
+    body = (f"Hi {recipient_email},\n\n"
+            f"We have noticed the manual sync for your qTest {project_name}.\n"
+            "Can you please let us know the business use cases?\n\n"
+            "Thanks,\nAdmin Team")
+
+    msg = MIMEMultipart()
+    msg['From'] = sender_email
+    msg['To'] = recipient_email
+    msg['Cc'] = cc_email
+    msg['Subject'] = subject
+    msg.attach(MIMEText(body, 'plain'))
+    
+    recipients = [recipient_email] + [cc_email]
+    
+    try:
+        with smtplib.SMTP('smtp.example.com', 587) as server:  # Replace with your SMTP server
+            server.starttls()
+            server.login(sender_email, sender_password)
+            server.send_message(msg, from_addr=sender_email, to_addrs=recipients)
+            print(f"Email sent to {recipient_email} and CC'd to {cc_email}")
+    except Exception as e:
+        print(f"Failed to send email: {e}")
+
+if __name__ == "__main__":
+    # Sample data for local testing
+    sample_data = "https://qtest.com:8443/projectid/23 https://qtest.com:8443/user/mail/test@one.domain.com"
+    
+    # For Jenkins, read from environment variable
+    elk_data = os.environ.get('ELK_DATA', sample_data)
+    
+    if not elk_data:
+        raise ValueError("No ELK data found. Please ensure the 'ELK_DATA' parameter is set.")
+
+    try:
+        project_id, email = extract_info(elk_data)
+        email = modify_email(email)  # Modify the email to remove "one."
+        project_name = fetch_project_name(project_id)
+        write_to_file(project_id, email, project_name)
+        send_email(email, project_name, project_id)  # Trigger the email notification
+        print("Output written to output.txt")
+    except (ValueError, Exception) as e:
+        print(e)
