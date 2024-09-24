@@ -1,0 +1,3 @@
+I have connected with the Project:2150 team. Based on our discussion, they will create a new qTest project every month for test plans and test cases. They will enable Jira-qTest integration across multiple Jira projects, and since this is a new Jira connection, they will manually sync the Jira stories initially.
+
+I suggested they use Jira filters or configure the integration at the Jira project level instead of at the qTest project level. They recently enabled Jira-qTest integration for qTest, starting in August. I also provided an overview of how the Jira-qTest integration works. They confirmed they will not trigger the manual sync at the qTest project level but rather at the Jira project level."
