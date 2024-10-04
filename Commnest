@@ -1,4 +1,0 @@
-
-As discussed, for delete events, we have already modified the roles/permissions at the Test Design/Test Execution level so that we can track all delete events under the recycle bin, allowing us to restore them if needed. Additionally, we have enabled ELK alerts to notify QE Governance if the frequency of hits matches a defined threshold.
-
-For move events, the system is currently lacking some data, such as the module ID, and we have opened an enhancement request with the vendor to address this. As a workaround, we are notifying the QE team via ELK when such events occur.
