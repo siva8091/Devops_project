@@ -1,0 +1,22 @@
+import json
+
+# Specify the input and output file names
+input_file = 'data.json'
+output_file = 'cleaned_data.json'
+
+# Read the JSON data from the input file
+try:
+    with open(input_file, 'r') as file:
+        data = json.load(file)  # Load JSON data
+except json.JSONDecodeError as e:
+    print(f"JSON Decode Error: {e}")
+    exit(1)
+except FileNotFoundError:
+    print(f"Error: The file {input_file} does not exist.")
+    exit(1)
+
+# Write the cleaned JSON data to the output file with indentation
+with open(output_file, 'w') as file:
+    json.dump(data, file, indent=4)  # Use 4 spaces for indentation
+
+print(f"Cleaned JSON data has been written to {output_file}.")
