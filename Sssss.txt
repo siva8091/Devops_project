@@ -1,0 +1,10 @@
+Hi Team,
+
+We have noticed that a manual sync was triggered for your qTest project with Jira.
+
+Could you please let us know the reason for this?
+
+Note: The Jira-qTest integration is event-driven, so a manual sync is typically not required. If you still need to perform a manual sync, please use Jira filters for better control.
+
+For more information on how to use Jira filters, please follow this link: [Provide the link here]
+
