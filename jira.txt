@@ -1,0 +1,21 @@
+Audit Log Entry:
+{{#if(issue.fields.customfield_10001 != previousIssue.fields.customfield_10001)}}
+- Field: ARC Milestone ID
+- Old Value: {{previousIssue.fields.customfield_10001}}
+- New Value: {{issue.fields.customfield_10001}}
+{{/}}
+{{#if(issue.fields.customfield_10002 != previousIssue.fields.customfield_10002)}}
+- Field: ARC Workstream
+- Old Value: {{previousIssue.fields.customfield_10002}}
+- New Value: {{issue.fields.customfield_10002}}
+{{/}}
+{{#if(issue.fields.customfield_10003 != previousIssue.fields.customfield_10003)}}
+- Field: ARC Program
+- Old Value: {{previousIssue.fields.customfield_10003}}
+- New Value: {{issue.fields.customfield_10003}}
+{{/}}
+{{#if(issue.fields.customfield_10004 != previousIssue.fields.customfield_10004)}}
+- Field: Article
+- Old Value: {{previousIssue.fields.customfield_10004}}
+- New Value: {{issue.fields.customfield_10004}}
+{{/}}
