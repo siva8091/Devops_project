@@ -1,1 +1,9 @@
 sudo rpm --import https://www.azul.com/wp-content/uploads/2021/05/RPM-GPG-KEY-azul
+sudo tee /etc/yum.repos.d/zulu.repo <<EOF
+[zulu]
+name=Zulu OpenJDK
+baseurl=https://repos.azul.com/zulu/rhel/7/x86_64
+enabled=1
+gpgcheck=1
+gpgkey=https://www.azul.com/wp-content/uploads/2021/05/RPM-GPG-KEY-azul
+EOF
