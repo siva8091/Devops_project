@@ -7,3 +7,6 @@ enabled=1
 gpgcheck=1
 gpgkey=https://www.azul.com/wp-content/uploads/2021/05/RPM-GPG-KEY-azul
 EOF
+
+
+sudo yum install zulu21-jdk
