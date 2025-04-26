@@ -1,2 +1,14 @@
 sudo yum install -y curl
 curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh | sudo bash
+sudo systemctl stop gitlab-runner
+sudo mkdir -p /your/custom/path
+sudo rsync -av /etc/gitlab-runner/ /your/custom/path/
+sudo vi /etc/sysconfig/gitlab-runner
+
+CONFIG_FILE=/your/custom/path/config.toml
+[runners]
+  builds_dir = "/your/custom/path/builds"
+  cache_dir = "/your/custom/path/cache"
+
+sudo systemctl daemon-reload
+sudo systemctl start gitlab-runner
