@@ -1,2 +1,12 @@
 Since a very large number of field values were enabled for the project fields, the system was unable to save them at the site field level. The vendor has confirmed that this is a bug in the current version, and a fix has been provided in the upcoming latest LTS version, which will be released in a few weeks. Meanwhile, we are working on a custom solution to enable those fields with the same field values in the new projects.
+Hi Team,
 
+If you notice, SonarQube scan jobs are failing due to a Java compatibility issue.
+The latest version of SonarQube requires a minimum of JDK 17 for the Sonar Scanner to function correctly.
+
+Action Required:
+Please upgrade your environment to use at least JDK 17 and re-run the analysis.
+
+Let us know if you need any assistance.
+
+Thanks,
