@@ -1,1 +1,10 @@
 We got a response from the support team. Now they are asking us to try the latest version of the sonar-maven-plugin. However, the latest LTS release notes make no mention of any minimum required version for the sonar-maven-plugin related to the Maven Sonar scanner. Over 3,000 services are impacted, and updating the plugin version across all of them would require a huge amount of manual effort. If Sonar had a dependency on a newer plugin version, it should have been clearly documented in the release notes — instead, only JDK updates are mentioned. This is extremely frustrating and unacceptable on their part.
+Hi Varsha,
+
+We upgraded Sonar to the latest LTS version, and after the upgrade, we encountered compatibility issues with the sonar-maven-plugin. We raised a support ticket, and the support team has responded. They are now suggesting we try using the latest version of the sonar-maven-plugin.
+
+However, in the latest LTS release notes, there is no mention of any minimum required version for the sonar-maven-plugin when using the Maven Sonar scanner — only JDK-related updates are noted.
+This upgrade has impacted over 3,000 services, and updating the plugin version manually will require a lot of effort.
+
+Can you please ask them to arrange a call so we can discuss and reach a conclusion?
+
