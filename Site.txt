@@ -1,0 +1,2 @@
+Since a very large number of field values were enabled for the project fields, the system was unable to save them at the site field level. The vendor has confirmed that this is a bug in the current version, and a fix has been provided in the upcoming latest LTS version, which will be released in a few weeks. Meanwhile, we are working on a custom solution to enable those fields with the same field values in the new projects.
+
