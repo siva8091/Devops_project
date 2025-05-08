@@ -1,0 +1,7 @@
+As discussed, as part of the Sonar upgrade, new rules have been added. This change was already communicated in the non-prod sign-off.
+
+Below is the list of rules that were updated—please review them.
+
+If you wish to exclude any of these rules from your Sonar scans, please create a custom quality profile and assign it to the relevant projects.
+
+Note: The Sonar scan will run again for both overall code and new code.
