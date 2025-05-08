@@ -1,0 +1,8 @@
+Hi Vitor,
+
+We tried updating the status of some test runs, and they were updated successfully.
+
+We can create a new integration and try again.
+
+Sankar,
+Can we export the qTest execution data from Jira to compare the missing test runs?
