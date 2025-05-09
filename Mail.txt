@@ -1,0 +1,3 @@
+We have created new custom quality profiles that include rules from the previous Sonar LTS version. We also developed automation to map all the required projects under these profiles.
+
+Naga and Sai have validated the Sonar scans for some of the VSADs, and everything is going well so far with no issues reported.
