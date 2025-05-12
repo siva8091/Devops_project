@@ -1,0 +1,5 @@
+As discussed, we are working with the vendor on a workaround since the current LTS version of qTest has some limitations when updating system fields with large values.
+
+The latest update from the vendor is that they have provided us with DB scripts as a workaround. We are currently testing these in the qTest non-production environment.
+
+We will keep you posted on the progress.
