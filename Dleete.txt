@@ -1,0 +1,5 @@
+We had suggested archiving the unused test cases from the Test Design module. As per your team, all required test cases were already migrated to the 2025 folder. However, it appears that some users are still mapping test cases from the 2024 folder to the 2025 Test Execution. That’s why we recommended archiving only the unused test cases.
+
+It also seems the archiving was performed using your ID. Since we don’t have visibility or control over how your team is organizing the Test Design and Test Execution, we cannot confirm the exact changes made.
+
+Note: Please be aware that if any test case is deleted from Test Design, the associated test runs will also be removed from Test Execution
