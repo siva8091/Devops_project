@@ -1,0 +1,45 @@
+before_script:
+  - git fetch origin main
+  - git branch --track main origin/main || true
+
+
+
+
+
+
+######
+checkout([
+    $class: 'GitSCM',
+    branches: [[name: '*/feature-branch']],
+    userRemoteConfigs: [[url: 'https://github.com/your/repo.git']],
+    doGenerateSubmoduleConfigurations: false,
+    extensions: [
+        [$class: 'CloneOption', noTags: false, shallow: false, depth: 0, reference: '', timeout: 10]
+    ]
+])
+#######
+
+pipeline {
+    agent any
+    stages {
+        stage('Prepare Git') {
+            steps {
+                sh """
+                    git fetch origin main:refs/remotes/origin/main
+                    git branch --track main origin/main || true
+                """
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('MySonarQubeServer') {
+                    sh 'sonar-scanner -Dsonar.branch.name=feature-xyz -Dsonar.branch.target=main'
+                }
+            }
+        }
+    }
+}
+
+
+
