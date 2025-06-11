@@ -13,3 +13,8 @@ Creation of releases
 Defect creation across sprints
 Analytics and reporting
 Exploratory testing
+
+
+Based on previous trends, we reached around 460 licenses.
+Our active user count is approximately 7,000.
+Due to high user activity, there is a possibility of reaching the maximum license limit at times.
