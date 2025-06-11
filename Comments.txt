@@ -1,0 +1,15 @@
+No current issues with the 550-user license count.
+Onboarded 220 users to qTest under the Value NSA initiative.
+Received only 50 licenses.
+
+With 450 licenses, we may see some changes in usage patterns.
+Previously, we crossed 90% utilization when the license count was 460.
+If the license limit is exceeded, all BAU (Business As Usual) activities will be blocked.
+BAU activities include:
+
+Test case management
+Creation and execution of test cases
+Creation of releases
+Defect creation across sprints
+Analytics and reporting
+Exploratory testing
