@@ -1,0 +1,6 @@
+I connected with the team and updated the quality gate conditions as per your team's inputs. The builds should now work fine.
+
+We are still checking how it was working for you earlier with the previous conditions.
+
+Note: We haven’t made any changes from the Sonar platform side.
+
