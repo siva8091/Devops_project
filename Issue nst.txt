@@ -4,3 +4,11 @@ We are still checking how it was working for you earlier with the previous condi
 
 Note: We haven’t made any changes from the Sonar platform side.
 
+Hi,
+
+As I connected with the team, we’ve updated the quality gate conditions as per your team's request. The builds should now be good.
+
+However, we are still checking how it worked for you earlier with those conditions, as the issue count has remained constant.
+
+Note: We haven’t made any changes from the Sonar platform side.
+
