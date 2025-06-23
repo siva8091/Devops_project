@@ -1,0 +1,5 @@
+As we discussed on the call, this is not a Sonar issue. With the inclusion of Git parameters in the MR pipeline, you will get accurate Sonar results.
+
+However, the build is now failing with an npm error. Please check with the responsible team regarding this.
+
+If you need any assistance from the Sonar side, please let us know.
