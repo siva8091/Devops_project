@@ -1,0 +1,5 @@
+Check the File/Method Scope
+
+Cognitive Complexity is calculated per method/function, not line-by-line. So even a small change in a method can cause complexity to be re-evaluated for the entire method.
+
+For example, adding a single if inside a method can cause cognitive complexity to go over the threshold, even if most lines are unchanged.
