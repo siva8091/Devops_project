@@ -1,0 +1,3 @@
+Latency is expected as the qTest pre-prod environment is running with minimal configuration. Please proceed with testing the features and functionalities, and let us know if you encounter any issues.
+
+Note: A qTest upgrade is scheduled for July 8th from 6:00 AM to 10:00 AM IST. During this time, qTest will be unavailable.
