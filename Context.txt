@@ -1,0 +1,36 @@
+Bugs & Logical Errors
+"Analyze the following Java code for any potential bugs or logical errors such as null pointer exceptions, incorrect conditions, and improper handling of edge cases. Provide explanations and possible fixes."
+
+
+Security Vulnerabilities
+"Review the Java code for security vulnerabilities including input validation issues, injection risks, use of insecure APIs, and hardcoded secrets. Highlight any areas that could expose the application to threats."
+
+Identify code smells in the following Java code such as large methods, duplicate logic, long parameter lists, or violations of object-oriented design principles. Suggest refactoring strategies."
+
+Check the Java code for violations of standard coding practices like naming conventions, use of final/static modifiers, exception handling, and consistent formatting. Recommend improvements where needed."
+
+Review this code for readability and maintainability. Identify overly complex logic, unclear method or variable names, or lack of meaningful comments. Recommend how to improve clean coding."
+
+5. Performance Issues
+"Analyze the code for performance bottlenecks, such as inefficient loops, unnecessary object creation, or excessive database access. Recommend optimization techniques."
+
+
+####%%%%#####
+Bugs & Logical Errors
+"Analyze the following JavaScript code for potential bugs or logical errors such as undefined variables, incorrect conditions, asynchronous issues, or type coercion problems. Provide a detailed explanation with suggested fixes."
+
+
+Security Vulnerabilities
+"Review the JavaScript code for security risks, including cross-site scripting (XSS), insecure use of eval(), unsanitized inputs, or improper access control. Highlight any areas that could expose the application to client-side or server-side attacks."
+
+Code Smells
+"Identify code smells in this JavaScript code, such as long functions, duplicate logic, tight coupling, or inconsistent use of asynchronous patterns. Recommend clean and maintainable alternatives."
+
+Coding Standards & Best Practices
+"Check the following JavaScript code for best practice violations such as inconsistent naming, improper use of let, const, and var, missing semicolons, and unclear function scopes. Suggest improvements for consistency and readability."
+
+Performance Issues
+"Analyze the JavaScript code for performance issues like unnecessary DOM manipulation, excessive re-renders, memory leaks, blocking operations, or inefficient loops. Recommend performance optimizations.
+
+Clean Code & Readability
+"Review the code for readability and maintainability. Point out unclear variable or function names, nested callbacks or promises, lack of comments, and other clean code issues. Recommend ways to simplify or clarify the code."
