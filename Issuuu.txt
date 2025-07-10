@@ -1,0 +1,14 @@
+We are currently analyzing the way SonarQube classifies static code issues within our projects. We would like your support to confirm the following observations and clarify how SonarQube handles these specific categories:
+
+Syntax Errors
+As per our understanding, syntax errors (e.g., missing semicolons, unclosed brackets) are not detected by SonarQube and are instead handled by the compiler.
+Please confirm if SonarQube has any capability to detect syntax errors or if such issues are entirely out of scope.
+Logic Errors and Performance Bottlenecks
+Are logic-related issues and performance bottlenecks typically categorized under Bugs, Code Smells, or both?
+Please provide examples or guidance on how SonarQube distinguishes between them.
+**Compliance
+A network error occurred. Please check your connection and try again. If this issue persists please contact us through our help center at help.openai.com.
+
+
+Retry
+
