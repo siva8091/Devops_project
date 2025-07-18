@@ -1,0 +1,6 @@
+Hi Sai,
+
+As discussed on the call, we have completed the Sonar and Embold comparison for both Java and JavaScript code.
+Please find the attached comparison results and observations.
+Kindly review and feel free to add any comments or suggestions from the Apex perspective.
+
