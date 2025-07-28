@@ -1,0 +1,29 @@
+How?
+By enforcing a Clean as You Code approach in SonarQube, developers only need to fix issues in new or changed code (the New Code Period), rather than cleaning up legacy code. This is achieved by:
+
+Setting a New Code definition (e.g., based on a specific date, version, or Git history).
+Running SonarQube scans as part of CI/CD.
+Applying quality gates that ensure new code meets defined quality standards (no new bugs, no new code smells, etc.).
+What?
+Clean as You Code is a methodology that focuses on ensuring new or modified code is clean—free of bugs, security vulnerabilities, and code smells—while gradually improving overall codebase health over time without needing to clean up all legacy code at once.
+
+Why?
+Traditional code cleanup can be overwhelming. Clean as You Code offers a practical, incremental path to improving code quality. Instead of asking teams to fix years of technical debt, it ensures that:
+
+New code is always clean.
+Technical debt does not grow.
+Teams can focus on delivering features without being bogged down by legacy issues.
+Why is it relevant?
+This approach:
+
+Prevents the accumulation of new technical debt.
+Improves code quality continuously with minimal effort.
+Fits naturally into DevOps and CI/CD workflows.
+Supports compliance, security, and maintainability goals.
+Who benefits?
+Developers: Write better code, avoid rework, and reduce time spent debugging.
+QA/Testers: Receive higher-quality builds.
+DevOps/Release Teams: Fewer build failures due to quality gates.
+Product Owners/Stakeholders: Faster delivery with lower risk.
+Organizations: Long-term cost reduction, improved maintainability, and enhanced customer trust.
+Let me know if you're submitting this for a specific use case (e.g., Java projects, regulated environment, DevOps transformation), and I can tailor the content more precisely.
