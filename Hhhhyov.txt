@@ -1,0 +1,1 @@
+I have tested the static version with the previous version in Sonar. If we use a static version number for subsequent builds, we can retain the new code until the version is changed. We can manage the static version either through CI or by using Sonar APIs.
