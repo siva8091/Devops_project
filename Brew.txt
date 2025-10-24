@@ -1,0 +1,4 @@
+mkdir -p $HOME/.homebrew
+git clone https://github.com/Homebrew/brew $HOME/.homebrew
+eval "$($HOME/.homebrew/bin/brew shellenv)"
+brew install docker docker-compose colima
