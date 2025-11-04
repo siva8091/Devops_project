@@ -1,0 +1,44 @@
+Aspect
+SonarQube for IDE (Local Mode)
+SonarQube MCP (Multi-Component Pipeline)
+Key Advantage of MCP
+Architecture
+Local analysis runs fully inside the IDE using locally bundled analyzers.
+Analysis is delegated to a lightweight MCP server that communicates with the IDE.
+Centralized configuration, less IDE overhead.
+Analysis Execution
+Analysis happens on developer’s machine — analyzers are downloaded and executed locally.
+IDE sends the request to the MCP server, which performs the analysis and returns results.
+Faster and more consistent analysis across developers.
+Consistency with SonarQube Server
+May differ slightly depending on local plugin versions or rules.
+MCP uses the same analyzers and configuration as the SonarQube server.
+Ensures near-identical results between local and CI analysis.
+Performance
+Can be slower for large projects since the IDE handles the entire analysis.
+Offloads analysis to MCP, reducing IDE CPU and memory usage.
+Improves IDE responsiveness and developer experience.
+Setup Complexity
+Simple to set up – just install SonarLint or SonarQube extension.
+Requires MCP server setup and connection configuration.
+MCP suits managed or enterprise environments with multiple users.
+Scalability
+Each developer’s IDE acts independently.
+Central MCP instance can serve multiple developers.
+Scalable for large teams.
+Policy Enforcement
+Developers can disable or modify rules locally.
+Rules are controlled centrally through SonarQube and MCP configuration.
+Enforces consistent code quality policies.
+Network Dependency
+Works offline.
+Requires network connection to the MCP server.
+Centralized governance but depends on connectivity.
+Security / Compliance
+Local scans may bypass organizational proxies or policies.
+MCP runs within controlled server environments, ensuring compliance.
+Better control in corporate environments.
+Use Case
+Ideal for individual developers or small teams.
+Designed for enterprise environments where consistency, governance, and scalability are important.
+Enterprise-level adoption
