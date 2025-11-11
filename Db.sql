@@ -29,3 +29,14 @@ CREATE TABLE ce_activity_backup AS SELECT * FROM ce_activity;
 SELECT NOW();
 
 
+
+SELECT status, COUNT(*) FROM ce_activity GROUP BY stat
+
+###
+CREATE TABLE ce_activity_backup AS SELECT * FROM ce_activity;
+
+DELETE FROM ce_activity WHERE status = 'CANCELED';
+SELECT status, COUNT(*) FROM ce_activity GROUP BY status;
+
+
+
