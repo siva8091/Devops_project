@@ -22,6 +22,10 @@ ORDER BY created_at DESC;
 DELETE FROM ce_queue;
 DELETE FROM ce_activity WHERE status IN ('FAILED', 'CANCELED');
 
+CREATE TABLE ce_queue_backup AS SELECT * FROM ce_queue;
+CREATE TABLE ce_activity_backup AS SELECT * FROM ce_activity;
+
+
 SELECT NOW();
 
 
