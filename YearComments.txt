@@ -1,5 +1,14 @@
 Year-End Accomplishment Comments (Simple English)
 
+
+Clean As You Code Initiative – Simple Summary
+
+I’m working on the VZ Clean As You Code initiative, focusing on standardizing quality gates and profiles. Right now, we’re in the implementation stage and working closely with management to understand the benefits. We’re comparing how projects perform with and without these standards to show the improvement in code quality and reduce issues after deployment.
+
+⸻
+
+I hope this is simple and clear enough for you! Let me know if there’s anything else you nee
+
 Qlik View Update
 This year I supported the updates for Qlik View and helped make sure the reports were running smoothly for the team.
 
