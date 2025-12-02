@@ -1,0 +1,221 @@
+Year-End Accomplishment Comments (Simple English)
+
+Qlik View Update
+This year I supported the updates for Qlik View and helped make sure the reports were running smoothly for the team.
+
+QTest Value Migration
+I worked on the QTest value migration and ensured the data moved correctly without any impact to users.
+
+Enhanced Monitoring & Observability
+I improved our monitoring setup by creating dashboards and adding better observability so issues can be detected faster.
+
+License Renewal
+I completed the QTest license renewal process on time and coordinated with the required teams to avoid any disruption.
+
+Disaster Recovery (DR)
+I contributed to the DR activities and made sure the required steps were tested and documented properly.
+
+Pre-Prod Environment
+I helped maintain and stabilise the pre-prod environment for testing needs and supported teams during their release activities.
+
+QTest Upgrade
+I was involved in the QTest upgrade and ensured the system was tested, stable, and ready for users after the upgrade.
+
+Apigee Hybrid Migration & Chain Proxy Removal
+I supported the Apigee hybrid migration and took care of chain proxy removals to simplify the overall setup.
+
+QTest Product Stability Improvements
+I worked on increasing heap memory and thread count to improve QTest stability and handled performance-related issues.
+
+1915 QTest Project – 2024 Archiving
+I completed the archiving activity for the 1915 project to improve system performance and reduce load.
+
+ELK Logs & Alert Enhancements
+I helped enhance the ELK logs and alerting setup so that issues can be tracked and resolved more quickly.
+
+Automation for Inactive Users
+I created and improved automation to activate users who were inactive, which reduced manual work for the team.
+
+Knowledge Transfer (KT) & Training
+I provided KT sessions to team members and helped them understand our processes and tools better.
+
+EFS Optimization
+I worked on EFS optimization to improve performance and ensure storage was used efficiently.
+
+
+######
+Year-End Accomplishment Comments (Very Simple English)
+
+Qlik View Update
+I helped update Qlik View and made sure the reports worked properly.
+
+QTest Value Migration
+I worked on moving QTest values and made sure everything was correct after the migration.
+
+Monitoring & Dashboards
+I improved our monitoring by adding new dashboards so we can see issues faster.
+
+License Renewal
+I completed the QTest license renewal on time and avoided any service issues.
+
+DR Work
+I supported the DR activities and helped make sure everything was set up and tested.
+
+Pre-Prod Environment
+I helped maintain the pre-prod environment and supported the team during testing.
+
+QTest Upgrade
+I was involved in the QTest upgrade and helped make sure the system was stable afterwards.
+
+Apigee Hybrid & Proxy Removal
+I supported the Apigee hybrid migration and removed chain proxies to simplify the setup.
+
+QTest Stability Improvements
+I worked on improving QTest performance by increasing memory and thread count.
+
+1915 Project Archiving
+I completed the 1915 project archiving to make the system run faster.
+
+ELK Logs & Alerts
+I improved ELK logs and alerts so that issues can be found and fixed quicker.
+
+Automation for Inactive Users
+I created automation to activate inactive users and reduced manual work.
+
+KT & Training
+I gave KT sessions and trained team members on our systems and processes.
+
+EFS Optimization
+I worked on EFS optimization to improve performance and save storage.
+
+####
+This year I worked on several improvements for QTest and our related systems. I helped with updates, migrations, performance fixes, and monitoring changes. I also supported DR work, pre-prod activities, and upgrades. I improved automation, logs, and alerts, and completed archiving and optimization tasks. I shared knowledge with the team and helped them understand the tools better. Overall, I focused on keeping the systems stable and improving the user experience.
+
+
+####
+sonar
+SonarQube – Year-End Accomplishment Comments (Simple English)
+
+SonarQube Version Upgrade
+I worked on upgrading SonarQube to the newer version and made sure the system was stable after the upgrade.
+
+Automations (Quality Gate Mapping, Profile Mapping)
+I created and improved automations for quality gates and quality profiles to reduce manual work and avoid mistakes.
+
+DB Upgrade (EOL)
+I supported the database upgrade for SonarQube since the old version was end-of-life, and made sure everything worked fine after the change.
+
+Infra Cost Optimization
+I helped in reducing infra cost by cleaning up unused items and optimizing the setup.
+
+Monitoring & Dashboards
+I added better dashboards and improved monitoring so we can track issues faster and improve observability.
+
+License Renewal
+I completed the SonarQube license renewal on time and avoided any service interruption.
+
+DR Work
+I took part in the DR activities and helped validate the setup and documentation.
+
+Pre-Prod Environment
+I supported the pre-prod environment for SonarQube and helped teams during testing and validation.
+
+Emtech Session (Clean As You Code)
+I joined the Emtech session and supported the Clean As You Code adoption for better code quality.
+
+Quality Gate Governance
+I worked on governance activities like standardizing quality gates and cleaning up old/orphan gates.
+
+Sonar LOC Clean-up
+I completed LOC clean-up to improve system performance and reduce unnecessary load.
+
+Quality Profile Governance
+I cleaned up orphan quality profiles and removed unwanted global access to keep the setup secure and organized.
+
+Sonar EKS POC & Evaluation
+I worked on the SonarQube EKS POC to check how the system performs on EKS and shared my findings with the team.
+
+Evaluation of SonarQube MCP
+I evaluated the SonarQube MCP features and tested how they work in our environment.
+
+Evaluation of SonarQube AI Fix Features
+I tested the new AI features like AI code detection, AI code assurance, and AI auto-fix and shared the results with the team.
+
+SonarQube vs APEX (Internal)
+I compared SonarQube with APEX internally and helped the team understand the differences and strengths.
+
+#####
+Emtech Session (SonarQube Clean As You Code)
+I conducted the Emtech session on “Clean As You Code” for SonarQube. I explained how teams can follow the Clean Code approach and use quality gates correctly. I also shared best practices, showed examples, and answered questions from the team. This helped teams understand how to use SonarQube in the right way during their development work.
+
+
+###
+SonarQube – Year-End Accomplishment Comments (Expanded & Simple English)
+
+SonarQube Version Upgrade
+
+I completed the SonarQube version upgrade and made sure all projects worked fine after the update. I tested the system, fixed small issues, and coordinated with teams so there was no impact to their work.
+
+Automations (Quality Gate Mapping, Quality Profile Mapping)
+
+I created and improved automations for quality gates and quality profiles. This reduced a lot of manual effort and made the process more accurate. It also helped onboard new projects faster without depending on manual setup.
+
+DB Upgrade (EOL)
+
+Since the old database version reached end-of-life, I supported the DB upgrade activity. I validated the data before and after the upgrade and ensured SonarQube worked without errors. This helped keep the platform secure and up to date.
+
+Infra Cost Optimization
+
+I helped optimize the infrastructure by removing unused items, cleaning up old configurations, and improving the overall setup. This helped reduce costs and made the environment more efficient.
+
+Enhanced Monitoring (Dashboards) & Observability
+
+I improved our monitoring setup by adding new dashboards and alerts. These changes helped us identify problems faster and take action before users reported issues. Overall, it improved the stability of the system.
+
+License Renewal
+
+I handled the SonarQube license renewal process. I coordinated with internal and external teams, validated the new license, and made sure there was no downtime or access issue.
+
+DR Work
+
+I supported the DR activities by testing the required steps and validating the setup. I made sure we had clear documentation and proper procedures in place.
+
+Pre-Prod Environment
+
+I helped maintain the pre-prod environment and ensured it stayed stable for testing. I supported teams during their validations and fixed issues when required.
+
+Emtech Session (SonarQube Clean As You Code)
+
+I delivered an Emtech session on Clean As You Code. I explained how teams can follow good coding practices, use quality gates, and fix issues early in development. I also demonstrated examples, answered questions, and guided the team on how to use SonarQube effectively. This session helped teams understand the right approach to code quality.
+
+Quality Gate Governance (Standard Gates, Orphan Gate Cleanup)
+
+I worked on improving quality gate governance by cleaning up old and unused gates. I standardized the gates so every project follows the same rules. This made the overall governance cleaner and easier to maintain.
+
+Sonar LOC Cleanup
+
+I performed LOC cleanup to reduce unnecessary load and improve performance. This helped the platform run faster and more efficiently.
+
+Quality Profile Governance (Orphan Profiles, Removed Global Access)
+
+I cleaned up orphan quality profiles and removed unwanted global access. This helped improve security and made the profile structure more organized.
+
+Sonar EKS POC & Evaluation
+
+I contributed to the SonarQube EKS POC by testing performance, identifying gaps, and sharing the results with the team. This helped in evaluating whether EKS is suitable for SonarQube deployment.
+
+Evaluation of SonarQube MCP
+
+I worked on evaluating SonarQube MCP. I tested the features, analysed how it fits in our environment, and shared feedback with the team. This helped us understand the benefits and limitations of MCP.
+
+Evaluation of SonarQube AI Fix Features
+
+I tested the new AI features such as AI code detection, AI code assurance, and AI code fix. I reviewed the results, validated accuracy, and shared the findings with the team. This helped us plan how these features can be used in real projects.
+
+SonarQube vs APEX (Internal Comparison)
+
+I compared SonarQube with our internal tool APEX. I reviewed features, performance, and usability. I shared the differences with the team so they can decide which tool fits best for different use cases.
+
+
+
+
