@@ -1,0 +1,20 @@
+Hi Team,
+
+We have onboarded our application to CyberArk.
+The safe name is test-safe.
+
+We now need to retrieve our service account credentials using the CyberArk endpoint during job execution.
+
+Previously, we worked with Deelip from your team, but he is no longer available.
+
+Deelip suggested two approaches:
+	1.	Using certificates
+	2.	Installing CyberArk agents on our servers
+
+We are trying the certificate-based approach, where we will share our certificate details with your team and you will whitelist them from your end.
+
+At this stage, we are stuck and need your assistance to proceed further.
+
+Could you please share the POC details or next steps so that we can continue working on this?
+
+Thanks in advance for your suppo
