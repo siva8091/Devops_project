@@ -1,0 +1,103 @@
+Top 6 real reasons this happens (in your exact situation)
+
+1️⃣ Plugin .csproj is NOT added to the .sln (MOST COMMON)
+
+Even if .csproj exists in plugin folder, if it’s not in the solution, it won’t build.
+dotnet sln MySolution.sln list
+If your plugin project is missing here → Sonar will NOT scan it.
+dotnet sln MySolution.sln add Plugins\MyPlugin\MyPlugin.csproj
+Plugin project is added but NOT built (skipped)
+
+In Jenkins logs, search for the plugin name.
+Skipping project "MyPlugin.csproj"
+
+
+dotnet build Plugins\MyPlugin\MyPlugin.csproj
+
+TargetFramework mismatch (VERY COMMON)
+
+Example:
+	•	Jenkins has .NET 6
+	•	Plugin .csproj uses net7.0 or net48
+
+🔍 Error may be silent in solution buil
+
+<TargetFramework>net6.0</TargetFramework>
+
+<TargetFramework>net6.0</TargetFramework>
+
+Plugin .csproj has NO <Compile> items
+
+<ItemGroup>
+  <Compile Remove="**\*.cs" />
+</ItemGroup>
+
+no compile inclusion at all, then files are excluded.
+
+✅ Fix (explicit 
+
+<ItemGroup>
+  <Compile Include="**\*.cs" />
+</ItemGroup>
+
+
+Jenkins build is NOT inside Sonar begin/end
+
+dotnet build
+dotnet sonarscanner begin
+dotnet sonarscanner end
+
+Correct
+dotnet sonarscanner begin ...
+dotnet build MySolution.sln
+dotnet sonarscanner end ...
+
+You are using sonar-scanner instead of dotnet-sonarscanne
+en once — this causes -.
+
+🔍 Check Jenkins logs:
+	•	You must see Sensor C# [csharp]
+
+If not → wrong scanner.
+
+
+
+dotnet sln MySolution.sln list
+dotnet build Plugins\MyPlugin\MyPlugin.csproj
+MyPlugin.csproj
+INFO: Sensor C# [csharp]
+
+
+One-line root cause (based on all your messages)
+
+Your plugin .csproj files exist, but they are not being built during the Sonar analysis — so Sonar cannot analyze their .cs files.
+
+⸻
+
+🚀 If you want a guaranteed fix (works 99%
+Temporarily force-build plugins in Jenkins
+
+dotnet sonarscanner begin ...
+dotnet build MySolution.sln
+dotnet build Plugins\MyPlugin\MyPlugin.csproj
+dotnet sonarscanner end 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
