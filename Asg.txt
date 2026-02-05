@@ -1,0 +1,4 @@
+aws autoscaling attach-instances \
+  --instance-ids i-093c55dd0955f59d \
+  --auto-scaling-group-name gts-hyov-sonar-search-nonprod-asg-west-2-ASG-1NQQF9SXUINU2 \
+  --should-decrement-desired-capacity
