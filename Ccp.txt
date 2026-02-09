@@ -1,0 +1,6 @@
+Hi Team,
+As discussed earlier, we would like to integrate CyberArk with Jenkins to retrieve credentials.
+Based on the CyberArk documentation, we understand that integration can be done using the Conjur Jenkins plugin. However, as per your input, Conjur is not supported in Verizon.
+You mentioned that the recommended approach is the CCP process, but we do not see any Jenkins plugin available for CCP. We understand that CCP can be implemented using REST APIs; however, this would be very difficult for end users to implement and maintain.
+Could you please suggest how we can proceed with the integration?
+Thanks,
