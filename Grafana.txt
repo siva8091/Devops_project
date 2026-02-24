@@ -1,0 +1,23 @@
+sudo vi /etc/yum.repos.d/grafana.repo
+
+[grafana]
+name=Grafana
+baseurl=https://packages.grafana.com/oss/rpm
+repo_gpgcheck=1
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.grafana.com/gpg.key
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+
+sudo yum clean all
+sudo yum makecache
+
+sudo yum --showduplicates list grafana
+
+sudo yum install grafana-11.4.2-1
+
+sudo systemctl daemon-reload
+sudo systemctl enable grafana-server
+sudo systemctl start grafana-server
+
