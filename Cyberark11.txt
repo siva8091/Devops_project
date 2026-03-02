@@ -1,0 +1,52 @@
+Jenkins – CyberArk CCP Integration
+
+Purpose
+
+This document explains how Jenkins securely retrieves service account passwords from CyberArk during job execution. Passwords are not stored in Jenkins. Instead, they are fetched securely at runtime from CyberArk.
+
+⸻
+
+Overview
+
+Jenkins connects to CyberArk Central Credential Provider (CCP) using certificate-based authentication (Mutual TLS). All service account credentials are stored securely in CyberArk Safe. When a Jenkins job runs, it sends a secure request to CCP, and CyberArk returns the required credential.
+
+This approach ensures that passwords are never hardcoded in pipelines.
+
+⸻
+
+Components
+
+Jenkins is used to run automation jobs.
+CyberArk CCP acts as a secure REST API endpoint to provide credentials.
+CyberArk Safe securely stores the service account credentials.
+Target systems are accessed using the retrieved credentials.
+
+⸻
+
+Onboarding Process
+
+Before Jenkins can access CyberArk, onboarding is required. The certificate serial number, Jenkins server CIDR range, AppID, and Safe name must be shared with the CyberArk team.
+
+The CyberArk team will whitelist the certificate and server IP range and map the AppID to the correct Safe. Once approved, Jenkins can retrieve credentials.
+
+⸻
+
+Runtime Flow
+
+When a Jenkins job starts, it sends a secure HTTPS request to CyberArk CCP. CCP validates the certificate and the server IP range. After validation, the credential is retrieved from the Safe and returned to Jenkins. Jenkins uses the credential during execution and does not store it after the job completes.
+
+⸻
+
+Security Controls
+
+There are no hardcoded passwords in Jenkins.
+Authentication is done using certificates.
+All credential access is logged in CyberArk.
+Secrets are not printed in Jenkins logs.
+Password rotation is managed centrally in CyberArk.
+
+⸻
+
+Benefits
+
+This integration improves security by centralizing credential management. It supports audit and compliance requirements. It reduces operational risk and ensures secure automation practices.
