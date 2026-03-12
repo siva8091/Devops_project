@@ -1,0 +1,18 @@
+{
+  "servers": {
+    "sonarqube": {
+      "type": "stdio",
+      "command": "java",
+      "args": [
+        "-jar",
+        "/Users/MERUSI9/mcp/sonarqube-mcp-server.jar"
+      ],
+      "env": {
+        "SONARQUBE_URL": "https://onesonarcloud-test.ebiz.verizon.com",
+        "SONARQUBE_TOKEN": "YOUR_TOKEN",
+        "SONARQUBE_IDE_PORT": "64120"
+      },
+      "storagePath": "/Users/MERUSI9/mcp/storage"
+    }
+  }
+}
