@@ -26,3 +26,22 @@ chmod +x start-mcp.sh
     }
   }
 }
+
+
+
+#!/bin/bash
+
+# Transport configuration
+export SONARQUBE_TRANSPORT=http
+export SONARQUBE_HTTP_PORT=8080
+export SONARQUBE_HTTP_HOST=0.0.0.0
+
+# SonarQube connection
+export SONAR_HOST_URL=http://sonarqube.company.com:9000
+export SONAR_TOKEN=your-sonar-token
+
+# MCP storage location
+export STORAGE_PATH=/opt/sonar-mcp/storage
+
+# Start MCP server
+java -jar sonarqube-mcp-server.jar
