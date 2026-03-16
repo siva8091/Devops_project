@@ -1,0 +1,28 @@
+/opt/sonar-mcp
+ ├── sonarqube-mcp-server.jar
+ ├── storage
+ └── start-mcp.sh
+
+#!/bin/bash
+
+export SONARQUBE_URL=http://your-sonarqube-server:9000
+export SONARQUBE_TOKEN=<initial-admin-token>
+export STORAGE_PATH=/opt/sonar-mcp/storage
+
+java -jar sonarqube-mcp-server.jar
+
+chmod +x start-mcp.sh
+./start-mcp.sh
+
+
+{
+  "mcpServers": {
+    "sonarqube": {
+      "url": "http://your-mcp-server:8080",
+      "env": {
+        "SONAR_HOST_URL": "http://sonarqube.company.com:9000",
+        "SONAR_TOKEN": "their-personal-token"
+      }
+    }
+  }
+}
