@@ -33,3 +33,20 @@ for index, row in data.iterrows():
     else:
         print(f"Failed to make the request for user {row['Id']}. Status code: {response.status_code}")
         print("Response data:", response.text)
+
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--input")
+parser.add_argument("--output")
+parser.add_argument("--jenkins_base")
+parser.add_argument("--token")
+
+args = parser.parse_args()
+
+# ✅ IMPORTANT: override old hardcoded values
+INPUT_FILE = args.input
+OUTPUT_CSV = args.output
+JENKINS_BASE = args.jenkins_base
+J_TOKEN = args.token
+
