@@ -50,3 +50,31 @@ OUTPUT_CSV = args.output
 JENKINS_BASE = args.jenkins_base
 J_TOKEN = args.token
 
+
+
+
+
+#####
+# --- ARGUMENTS (already correct in your script) ---
+parser = argparse.ArgumentParser()
+parser.add_argument("--input")
+parser.add_argument("--output")
+parser.add_argument("--jenkins_base")
+parser.add_argument("--token")
+
+args = parser.parse_args()
+
+# --- USE PIPELINE VALUES (FINAL FIX) ---
+WORKSPACE = os.environ.get("WORKSPACE", ".")
+
+INPUT_FILE = args.input if args.input else os.path.join(WORKSPACE, "jenkins_jobs.txt")
+OUTPUT_CSV = args.output if args.output else os.path.join(WORKSPACE, "output.csv")
+PROGRESS_FILE = os.path.join(WORKSPACE, "progress.json")
+
+JENKINS_BASE = args.jenkins_base if args.jenkins_base else JENKINS_BASE
+J_TOKEN = args.token if args.token else J_TOKEN
+
+# --- DEBUG (optional, remove later) ---
+print("INPUT_FILE:", INPUT_FILE)
+print("OUTPUT_CSV:", OUTPUT_CSV)
+
