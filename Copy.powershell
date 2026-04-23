@@ -1,0 +1,2 @@
+whoami
+New-Item "\\wtdcvpa11RPN156\VCB_ScriptingAutomation\test.txt" -ItemType File
