@@ -1,0 +1,50 @@
+# Fail on script errors (but robocopy uses exit codes differently)
+$ErrorActionPreference = "Stop"
+
+try {
+    # 1. Construct paths safely
+    $source = Join-Path -Path $env:WORKSPACE -ChildPath $env:SOURCE_PATH
+    $dest = $env:DEST_PATH.TrimEnd('\')
+
+    # Debug logs
+    Write-Host "Running as: $(whoami)"
+    Write-Host "Source Path: $source"
+    Write-Host "Destination Path: $dest"
+
+    # Validate source
+    if (!(Test-Path $source)) {
+        throw "Source path $source does NOT exist"
+    }
+
+    # Validate destination
+    if (!(Test-Path $dest)) {
+        throw "Destination path $dest is NOT reachable"
+    }
+
+    Write-Host "Starting robocopy..."
+
+    # 2. Robocopy command
+    robocopy "$source" "$dest" `
+        /MIR `              # Mirror source → destination (sync)
+        /XD ".git" `        # Exclude .git folder
+        /R:2 `              # Retry 2 times
+        /W:5 `              # Wait 5 seconds between retries
+        /NP `               # No progress (clean logs)
+        /NFL `              # No file list (optional clean logs)
+        /NDL               # No directory list (optional clean logs)
+
+    # 3. Handle robocopy exit codes
+    $rc = $LASTEXITCODE
+
+    Write-Host "Robocopy exit code: $rc"
+
+    if ($rc -le 3) {
+        Write-Host "Copy completed successfully"
+    } else {
+        throw "Robocopy failed with exit code $rc"
+    }
+}
+catch {
+    Write-Error "Deployment failed: $_"
+    exit 1
+}
