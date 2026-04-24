@@ -1,0 +1,38 @@
+# Fail on any error
+$ErrorActionPreference = "Stop"
+
+try {
+    # 1. Construct paths safely
+    $source = Join-Path -Path $env:WORKSPACE -ChildPath $env:SOURCE_PATH
+    $dest = $env:DEST_PATH.TrimEnd('\')
+
+    # Debug logs
+    Write-Host "Running as: $(whoami)"
+    Write-Host "Source Path: $source"
+    Write-Host "Destination Path: $dest"
+
+    # Validate source
+    if (!(Test-Path $source)) {
+        throw "Source path $source does NOT exist"
+    }
+
+    # Validate destination
+    if (!(Test-Path $dest)) {
+        throw "Destination path $dest is NOT reachable"
+    }
+
+    Write-Host "Destination is reachable, starting copy..."
+
+    # Copy contents only
+    Copy-Item -Path "$source\*" `
+              -Destination "$dest" `
+              -Recurse `
+              -Force `
+              -Exclude ".git","*.git*"
+
+    Write-Host "Copy completed successfully"
+}
+catch {
+    Write-Error "Deployment failed: $_"
+    exit 1
+}
