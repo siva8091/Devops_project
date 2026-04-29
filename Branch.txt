@@ -1,0 +1,5 @@
+Today, as part of our clean-up effort, I deleted about 17,000 inactive branches in SonarQube that hadn’t been analyzed in the last year. This provided several important benefits:
+Better Performance: Removing old branches speeds up SonarQube and keeps it organized.
+Greater Visibility: A simplified branch list helps teams quickly spot active code and track progress.
+Easier Management: Fewer branches mean less time dealing with outdated data and more focus on current tasks.
+Cost Savings: By cutting down on stored data, we make better use of our resources.
