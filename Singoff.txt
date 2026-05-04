@@ -3,3 +3,9 @@ If any service is still on the default quality profile, please identify it and m
 Additionally, please validate the Maven, Gradle, and Node.js scanner jobs as part of your testing.
 Please complete validation in pre-production and provide your sign-off.
 Regards,
+
+Hi Sai,
+It looks like Naga Bhashan is out. I checked offline regarding his backup, and he mentioned that no one is available.
+As discussed in the standup, should we proceed with the upgrade or postpone it?
+
+
