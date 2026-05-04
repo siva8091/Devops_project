@@ -1,0 +1,5 @@
+Since your services are using custom quality profiles, no impact is expected from the SonarQube upgrade.
+If any service is still on the default quality profile, please identify it and map it to the appropriate custom profile to mitigate any impact.
+Additionally, please validate the Maven, Gradle, and Node.js scanner jobs as part of your testing.
+Please complete validation in pre-production and provide your sign-off.
+Regards,
