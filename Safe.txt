@@ -1,0 +1,2 @@
+As discussed, we are currently storing dynamic tokens (API keys) within our internal database, which may pose potential security risks. We would like to assess the feasibility of leveraging CyberArk for the secure storage and retrieval of these tokens.
+Should this be feasible, we kindly request your guidance on the recommended implementation approach, along with any key considerations or best practices we should take into account.
