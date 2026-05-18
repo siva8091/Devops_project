@@ -1,0 +1,10 @@
+Hi Team,
+
+As communicated earlier, the Pre-Prod instance is a replica of the Production environment with the same custom quality profiles and configurations.
+
+Minor issue count variation is expected after the SonarQube upgrade due to changes in the respective language analyzers and deprecated rule behavior. The observed increase/decrease in issues is minimal and expected.
+
+Please review the below test results.
+
+Thanks,
+[Your Name]
