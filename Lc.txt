@@ -1,0 +1,145 @@
+import requests
+from requests.auth import HTTPBasicAuth
+import smtplib
+from email.mime.text import MIMEText
+import urllib3
+
+# Disable SSL warnings
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+# ==============================
+# SonarQube Details
+# ==============================
+
+SONAR_URL = "https://onesonarcloud.verizon.com/api/projects/license_usage"
+
+SONAR_USER = "admin"
+SONAR_PASS = "Ver1z0n!"
+
+TOTAL_LICENSE_LOC = 250000000
+THRESHOLD_PERCENT = 3
+
+# ==============================
+# SMTP Details
+# ==============================
+
+SMTP_SERVER = "vzsmtp.verizon.com"
+SMTP_PORT = 25
+
+FROM_EMAIL = "sivaiah.merugumala1@one.verizon.com"
+
+TO_ADDRESSES = [
+    "sivaiah.merugumala1@one.verizon.com",
+    "anusha.madhavarapu1@one.verizon.com"
+]
+
+# ==============================
+# Session Reuse (FASTER)
+# ==============================
+
+session = requests.Session()
+session.auth = HTTPBasicAuth(SONAR_USER, SONAR_PASS)
+
+# ==============================
+# Get Usage Percentage
+# ==============================
+
+def get_usage_percentage():
+
+    try:
+
+        response = session.get(
+            SONAR_URL,
+            verify=False,
+            timeout=30
+        )
+
+        if response.status_code != 200:
+            print(f"API FAILED : {response.status_code}")
+            return None
+
+        data = response.json()
+
+        projects = data.get("projects", [])
+
+        # FAST SUM
+        total_loc = sum(
+            project.get("linesOfCode", 0)
+            for project in projects
+        )
+
+        usage_percent = (
+            total_loc / TOTAL_LICENSE_LOC
+        ) * 100
+
+        print(f"TOTAL LOC USED : {total_loc}")
+        print(f"USAGE PERCENT  : {usage_percent:.2f}%")
+
+        return usage_percent
+
+    except Exception as e:
+        print(f"ERROR : {e}")
+        return None
+
+# ==============================
+# Send Email
+# ==============================
+
+def send_email(usage_percent):
+
+    try:
+
+        body = f"""
+SonarQube License Usage Alert
+
+Current Usage : {usage_percent:.2f}%
+
+Threshold     : {THRESHOLD_PERCENT}%
+
+Please review inactive projects.
+
+Regards,
+SonarQube Automation
+"""
+
+        msg = MIMEText(body)
+
+        msg["Subject"] = "SonarQube License Usage Alert"
+        msg["From"] = FROM_EMAIL
+        msg["To"] = ",".join(TO_ADDRESSES)
+
+        smtp = smtplib.SMTP(SMTP_SERVER, SMTP_PORT, timeout=20)
+
+        smtp.sendmail(
+            FROM_EMAIL,
+            TO_ADDRESSES,
+            msg.as_string()
+        )
+
+        smtp.quit()
+
+        print("EMAIL SENT SUCCESSFULLY")
+
+    except Exception as e:
+        print(f"EMAIL ERROR : {e}")
+
+# ==============================
+# Main
+# ==============================
+
+if __name__ == "__main__":
+
+    usage = get_usage_percentage()
+
+    if usage is None:
+        print("FAILED TO GET USAGE")
+
+    elif usage >= THRESHOLD_PERCENT:
+
+        print("THRESHOLD REACHED")
+
+        send_email(usage)
+
+    else:
+
+        print("THRESHOLD NOT REACHED")
