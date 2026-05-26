@@ -1,0 +1,37 @@
+import requests
+from requests.auth import HTTPBasicAuth
+import smtplib
+from email.mime.text import MIMEText
+
+# SonarQube API and authentication
+SONAR_URL = "https://onesonarcloud.verizon.com/api/projects/license_usage"
+SONAR_USER = "admin"
+SONAR_PASS = "Verizon"
+THRESHOLD_PERCENT = 3
+
+# SMTP server details (no auth)
+SMTP_SERVER = "vzsmtp.verizon.com"
+SMTP_PORT = 25
+TO_ADDRESSES = ["sivaiah.merugumala1@one.verizon.com", "anusha.madhavarapu1@one.verizon.com"]
+
+def get_usage_percentage():
+    response = requests.get(SONAR_URL, auth=HTTPBasicAuth(SONAR_USER, SONAR_PASS))
+    data = response.json()
+    total_lines = sum(project.get("linesOfCode", 0) for project in data.get("projects", []))
+    total_licensed = 250_000_000
+    usage_percent = (total_lines / total_licensed) * 100
+    return usage_percent
+
+def send_email(percentage):
+    msg = MIMEText(f"Warning: Code usage is at {percentage:.2f}%!")
+    msg['Subject'] = 'SonarQube License Usage Alert'
+    msg['From'] = "sivaiah.merugumala1@one.verizon.com"
+    msg['To'] = ", ".join(TO_ADDRESSES)
+    
+    with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
+        server.sendmail(msg['From'], TO_ADDRESSES, msg.as_string())
+
+if __name__ == "__main__":
+    usage = get_usage_percentage()
+    if usage >= THRESHOLD_PERCENT:
+        send_email(usage)
