@@ -1,0 +1,90 @@
+import requests
+from requests.auth import HTTPBasicAuth
+import smtplib
+from email.mime.text import MIMEText
+
+# SonarQube API and authentication
+SONAR_URL = "https://onesonarcloud.verizon.com/api/projects/license_usage"
+SONAR_USER = "admin"
+SONAR_PASS = "Ver1z0n!"
+
+THRESHOLD_PERCENT = 3
+
+# Total purchased LOC
+TOTAL_LICENSE_LOC = 250000000
+
+# SMTP server details
+SMTP_SERVER = "vzsmtp.verizon.com"
+SMTP_PORT = 25
+
+TO_ADDRESSES = [
+    "sivaiah.merugumala1@one.verizon.com",
+    "anusha.madhavarapu1@one.verizon.com"
+]
+
+def get_usage_percentage():
+
+    response = requests.get(
+        SONAR_URL,
+        auth=HTTPBasicAuth(SONAR_USER, SONAR_PASS),
+        verify=False
+    )
+
+    print("STATUS CODE:", response.status_code)
+    print("RAW RESPONSE:", response.text[:500])
+
+    if response.status_code != 200:
+        return None
+
+    try:
+        data = response.json()
+    except Exception as e:
+        print("JSON PARSE ERROR:", e)
+        return None
+
+    projects = data.get("projects", [])
+
+    total_loc = 0
+
+    for project in projects:
+        total_loc += project.get("linesOfCode", 0)
+
+    usage_percent = (total_loc / TOTAL_LICENSE_LOC) * 100
+
+    print("TOTAL LOC:", total_loc)
+    print("USAGE PERCENT:", usage_percent)
+
+    return usage_percent
+
+
+def send_email(percentage):
+
+    msg = MIMEText(
+        f"Warning: SonarQube license usage reached {percentage:.2f}%"
+    )
+
+    msg["Subject"] = "SonarQube License Usage Alert"
+    msg["From"] = "sivaiah.merugumala1@one.verizon.com"
+    msg["To"] = ",".join(TO_ADDRESSES)
+
+    smtp = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+    smtp.sendmail(
+        "sivaiah.merugumala1@one.verizon.com",
+        TO_ADDRESSES,
+        msg.as_string()
+    )
+    smtp.quit()
+
+    print("EMAIL SENT")
+
+
+if __name__ == "__main__":
+
+    usage = get_usage_percentage()
+
+    if usage is None:
+        print("API FAILED")
+    elif usage >= THRESHOLD_PERCENT:
+        send_email(usage)
+    else:
+        print("Threshold not reached")
