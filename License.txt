@@ -1,0 +1,39 @@
+import requests
+from requests.auth import HTTPBasicAuth
+import smtplib
+from email.mime.text import MIMEText
+
+# SonarQube API and authentication
+SONAR_URL = "https://your-sonar-instance/api/license/metrics"
+SONAR_USER = "your-username"
+SONAR_PASS = "your-password"
+THRESHOLD_PERCENT = 80
+
+# SMTP server details (no auth)
+SMTP_SERVER = "smtp.your-email.com"
+SMTP_PORT = 587
+TO_ADDRESSES = ["recipient1@example.com", "recipient2@example.com"]
+
+def get_usage_percentage():
+    response = requests.get(SONAR_URL, auth=HTTPBasicAuth(SONAR_USER, SONAR_PASS))
+    data = response.json()
+    total_lines = data.get("totalLines", 0)
+    used_lines = data.get("usedLines", 0)
+    if total_lines == 0:
+        return 0
+    return (used_lines / total_lines) * 100
+
+def send_email(percentage):
+    msg = MIMEText(f"Warning: Code usage is at {percentage:.2f}%!")
+    msg['Subject'] = 'SonarQube Usage Alert'
+    msg['From'] = "alert@your-domain.com"
+    msg['To'] = ", ".join(TO_ADDRESSES)
+    
+    with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
+        server.starttls()
+        server.sendmail("alert@your-domain.com", TO_ADDRESSES, msg.as_string())
+
+if __name__ == "__main__":
+    usage = get_usage_percentage()
+    if usage >= THRESHOLD_PERCENT:
+        send_email(usage)
